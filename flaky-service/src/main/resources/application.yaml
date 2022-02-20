@@ -1,0 +1,34 @@
+server:
+  port: 9080
+
+
+spring:
+  profiles:
+    active: chaos-monkey
+
+chaos:
+  monkey:
+    enabled: true
+    assaults:
+      latencyActive: true
+      latencyRangeStart: 100
+      latencyRangeEnd: 2000
+      exceptions-active: true
+      level: 1
+    watcher:
+      controller: true
+      component: true
+      restController: true
+      service: true
+      repository: true
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+    chaosmonkeyjmx:
+      enabled: false
+    endpoints:
+      web:
+        exposure:
+          include: "*"
